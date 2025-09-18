@@ -28,7 +28,7 @@ export default function FacialExpression() {
 
   // Fetch songs
   useEffect(() => {
-    axios.get("http://localhost:3000/songs").then((res) => setSongs(res.data));
+    axios.get("https://mood-detetction.onrender.com/songs").then((res) => setSongs(res.data));
   }, []);
 
   // Detect mood
