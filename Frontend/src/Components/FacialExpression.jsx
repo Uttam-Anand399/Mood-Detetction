@@ -52,35 +52,40 @@ export default function FacialExpression() {
     (el) => el.mood?.toLowerCase() === moodOnly
   );
 
-  return (<div
+  return (
+  <div
   style={{
     display: "flex",
+    flexWrap: "wrap",
     gap: "2rem",
     padding: "2rem",
     background: "#f5f7fa",
     borderRadius: "16px",
     boxShadow: "0 8px 20px rgba(0,0,0,0.08)",
-    alignItems: "flex-start",
     fontFamily: "Segoe UI, sans-serif",
+    maxWidth: "1200px",
+    margin: "0 auto",
   }}
 >
   {/* Left side: video + button */}
   <div
     style={{
+      flex: "1 1 320px",
       textAlign: "center",
       background: "#ffffff",
       padding: "1.5rem",
       borderRadius: "12px",
       boxShadow: "0 4px 12px rgba(0,0,0,0.06)",
+      width: "100%",
     }}
   >
     <video
       ref={videoRef}
       autoPlay
       muted
-      width="320"
-      height="380"
       style={{
+        width: "100%",
+        maxHeight: "380px",
         borderRadius: "12px",
         objectFit: "cover",
         border: "1px solid #e2e8f0",
@@ -100,6 +105,8 @@ export default function FacialExpression() {
         cursor: "pointer",
         boxShadow: "0 3px 8px rgba(0,0,0,0.15)",
         transition: "background 0.3s ease",
+        width: "100%",
+        maxWidth: "220px",
       }}
       onMouseOver={(e) =>
         (e.currentTarget.style.background =
@@ -120,17 +127,18 @@ export default function FacialExpression() {
   {/* Right side: recommended tracks */}
   <div
     style={{
-      flex: 1,
+      flex: "2 1 400px",
       background: "#ffffff",
       padding: "1.5rem",
       borderRadius: "12px",
       boxShadow: "0 4px 12px rgba(0,0,0,0.06)",
+      width: "100%",
     }}
   >
     <h2 style={{ marginBottom: "1rem", color: "#2d3748" }}>
       Recommended Tracks ({filterSongs.length})
     </h2>
-    <ul style={{ listStyle: "none", padding: 0 }}>
+    <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
       {filterSongs.map((track) => (
         <li
           key={track._id}
@@ -140,6 +148,7 @@ export default function FacialExpression() {
             background: "#f9fafb",
             borderRadius: "8px",
             display: "flex",
+            flexWrap: "wrap",
             alignItems: "center",
             justifyContent: "space-between",
             boxShadow: "inset 0 1px 2px rgba(0,0,0,0.03)",
@@ -148,7 +157,11 @@ export default function FacialExpression() {
           <span style={{ fontWeight: 500, color: "#4a5568" }}>
             {track.title}
           </span>
-          <audio controls src={track.audioFile} style={{ marginLeft: "1rem" }} />
+          <audio
+            controls
+            src={track.audioFile}
+            style={{ marginLeft: "1rem", width: "100%", maxWidth: "300px" }}
+          />
         </li>
       ))}
 
@@ -160,6 +173,7 @@ export default function FacialExpression() {
     </ul>
   </div>
 </div>
+
 
   );
 }
